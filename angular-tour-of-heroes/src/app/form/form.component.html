@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<h1>Form</h1>
+<div style="padding: 20px">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit(f.form.value)" #f="ngForm" novalidate>
+        <div>
+            <label>Vorname</label>
+            <input type="text" name="firstname" class="form-control" [(ngModel)]="model.firstname" #firstname="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && firstname.invalid }" required>
+            <div *ngIf="f.submitted && firstname.invalid" class="invalid-feedback">
+                <div *ngIf="firstname.errors.required">Vorname ist zwingend</div>
+            </div>
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" [(ngModel)]="model.name" #name="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required>
+            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors.required">Name ist zwingend</div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button>Senden</button>
+        </div>
+    </form>
+</div>
